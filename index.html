@@ -1,1 +1,120 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIGHTFALL — Co-op Horror</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="menu" class="overlay">
+    <div class="panel">
+      <div class="eyebrow">CO-OP SURVIVAL HORROR</div>
+      <h1>NIGHTFALL<span>.</span></h1>
+      <p class="subtitle">The school should have been empty.</p>
+
+      <label for="playerName">CALLSIGN</label>
+      <input id="playerName" maxlength="16" value="HDP_Gamer">
+
+      <button id="soloBtn" class="primary">ENTER THE SCHOOL</button>
+
+      <div class="divider"><span>PLAY WITH A FRIEND</span></div>
+      <button id="hostBtn">HOST A ROOM</button>
+
+      <div class="joinrow">
+        <input id="roomCode" placeholder="Friend's room code">
+        <button id="joinBtn">JOIN</button>
+      </div>
+
+      <p id="netStatus" class="status">
+        Solo mode is ready. Multiplayer uses a peer-to-peer connection.
+      </p>
+
+      <div class="controls">
+        WASD move · Mouse look · Shift sprint · F flashlight · E interact · Esc release mouse
+      </div>
+    </div>
+  </div>
+
+  <div id="game">
+    <canvas id="scene"></canvas>
+    <div class="vignette"></div>
+
+    <div class="topbar">
+      <div class="brand">NIGHTFALL<span>.</span> <small>CO-OP</small></div>
+      <div id="roomBadge">SOLO SESSION</div>
+    </div>
+
+    <div class="objective">
+      <div class="eyebrow">CURRENT OBJECTIVE</div>
+      <strong id="objectiveText">Find the key</strong>
+      <small id="objectiveHint">Search the abandoned school.</small>
+    </div>
+
+    <div class="teammates">
+      <div class="eyebrow">SURVIVORS</div>
+      <div id="playerList">
+        <div class="playerline"><i></i><span>HDP_Gamer</span><b>YOU</b></div>
+      </div>
+    </div>
+
+    <div class="centerPrompt" id="prompt"></div>
+    <div id="toast"></div>
+
+    <div class="bottomleft">
+      <div class="stat">
+        <span>♥</span>
+        <div class="bar"><i id="healthBar"></i></div>
+        <b id="healthNum">100</b>
+      </div>
+
+      <div class="stat stamina">
+        <span>⚡</span>
+        <div class="bar"><i id="staminaBar"></i></div>
+      </div>
+
+      <div class="help">
+        WASD MOVE · SHIFT SPRINT · F FLASHLIGHT · E INTERACT
+      </div>
+    </div>
+
+    <div class="inventory">
+      <div class="slot active"><span>▰</span><small>F</small><label>FLASHLIGHT</label></div>
+      <div class="slot"><span>⚿</span><small>E</small><label>KEY</label></div>
+      <div class="slot"><span>＋</span><small>Q</small><label>MEDKIT</label></div>
+    </div>
+
+    <div class="chat">
+      <div class="chathead">
+        TEAM COMMS <span id="connectionDot">● SOLO</span>
+      </div>
+      <div id="chatMessages">
+        <p class="systemmsg">You hear rain tapping against the windows...</p>
+      </div>
+      <form id="chatForm">
+        <input id="chatInput" maxlength="140" placeholder="Message your team…">
+        <button aria-label="Send message">➤</button>
+      </form>
+    </div>
+
+    <div id="crosshair">+</div>
+    <div id="damageFlash"></div>
+
+    <div id="winScreen" class="overlay hidden">
+      <div class="panel">
+        <div class="eyebrow">MISSION COMPLETE</div>
+        <h1>YOU MADE IT<span>.</span></h1>
+        <p>The school is behind you. For now.</p>
+        <button id="againBtn" class="primary">PLAY AGAIN</button>
+        <button id="menuBtn">BACK TO MENU</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
+
